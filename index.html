@@ -7,33 +7,45 @@
 
 <style>
 body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  color: #000;
   margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #000;
 }
-header, footer {
+header {
+  background: #000;
+  color: #fff;
+  padding: 30px;
   text-align: center;
-  padding: 20px;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
 }
-footer {
-  border-top: 1px solid #ddd;
-  font-size: 14px;
+header h1 {
+  margin: 0;
+  letter-spacing: 2px;
 }
 .container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: auto;
   padding: 20px;
 }
-.produto {
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.card {
   background: #fff;
   border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 20px;
+  text-align: center;
 }
-select, input, button {
+.card h3 {
+  margin: 10px 0;
+}
+.price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+select, button, input {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
@@ -44,12 +56,20 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
-.pix {
+.checkout {
   display: none;
   background: #fff;
   border: 2px solid #000;
   padding: 20px;
-  margin-top: 20px;
+  margin-top: 30px;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #000;
+  color: #fff;
+  margin-top: 40px;
+  font-size: 14px;
 }
 </style>
 </head>
@@ -57,76 +77,76 @@ button {
 <body>
 
 <header>
-<h1>Backseat Wear</h1>
-<p>Camisetas premium • Estilo urbano</p>
+  <h1>BACKSEAT WEAR</h1>
+  <p>Camisetas premium • Estilo urbano</p>
 </header>
 
 <div class="container">
 
+<h2>Produtos</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Stellar Tee – Branca</h3>
+<p class="price">R$ 79,99</p>
+<select>
+<option>Tamanho</option>
+<option>P</option><option>M</option><option>G</option><option>GG</option>
+</select>
+<button onclick="comprar('Stellar Tee – Branca | R$ 79,99')">Comprar</button>
+</div>
+
+<div class="card">
+<h3>Stellar Tee – Preta</h3>
+<p class="price">R$ 79,99</p>
+<select>
+<option>Tamanho</option>
+<option>P</option><option>M</option><option>G</option><option>GG</option>
+</select>
+<button onclick="comprar('Stellar Tee – Preta | R$ 79,99')">Comprar</button>
+</div>
+
+<div class="card">
+<h3>ACE Tee</h3>
+<p class="price">R$ 99,90</p>
+<select>
+<option>Tamanho</option>
+<option>P</option><option>M</option><option>G</option><option>GG</option>
+</select>
+<button onclick="comprar('ACE Tee | R$ 99,90')">Comprar</button>
+</div>
+
+</div>
+
+<div class="checkout" id="checkout">
 <h2>Finalizar compra</h2>
 
-<input id="nome" placeholder="Nome completo">
-<input id="email" placeholder="E-mail">
-<input id="endereco" placeholder="Endereço completo">
+<input placeholder="Nome completo">
+<input placeholder="E-mail">
+<input placeholder="Endereço completo">
 
-<select id="produto">
-<option value="">Selecione o produto</option>
-<option>Stellar Tee - Branca | R$ 79,99</option>
-<option>Stellar Tee - Preta | R$ 79,99</option>
-<option>ACE Tee | R$ 99,90</option>
-<option>Stellar Baby Look - Preta | R$ 79,99</option>
-<option>Stellar Baby Look - Branca | R$ 79,99</option>
-<option>Stellar Baby Look - Rosa Pink | R$ 79,99</option>
-<option>And Today | R$ 159,99</option>
-</select>
-
-<select id="tamanho">
-<option value="">Selecione o tamanho</option>
-<option>P</option>
-<option>M</option>
-<option>G</option>
-<option>GG</option>
-</select>
-
-<button onclick="finalizar()">Finalizar compra</button>
-
-<div class="pix" id="pix">
 <h3>Pagamento via Pix</h3>
-<p><strong>Chave Pix:</strong> 58450618819</p>
+<p><strong>Chave:</strong> 58450618819</p>
 <p><strong>Titular:</strong> Antonio Henrique</p>
 <p><strong>Banco:</strong> Inter</p>
 <p><strong>Entrega:</strong> 8 a 10 dias úteis</p>
-<p id="resumo"></p>
-<p>
-Instagram / TikTok: <strong>@backseatwear</strong>
-</p>
+
+<p id="pedido"></p>
 </div>
 
 </div>
 
 <footer>
-© 2026 Backseat Wear • Pagamento 100% via Pix
+Instagram / TikTok: @backseatwear <br>
+© 2026 Backseat Wear
 </footer>
 
 <script>
-function finalizar() {
-  const nome = document.getElementById("nome").value;
-  const email = document.getElementById("email").value;
-  const endereco = document.getElementById("endereco").value;
-  const produto = document.getElementById("produto").value;
-  const tamanho = document.getElementById("tamanho").value;
-
-  if (!nome || !email || !endereco || !produto || !tamanho) {
-    alert("Preencha todos os campos.");
-    return;
-  }
-
-  document.getElementById("pix").style.display = "block";
-  document.getElementById("resumo").innerText =
-    "Pedido: " + produto +
-    " | Tamanho: " + tamanho +
-    " | Cliente: " + nome +
-    " | Endereço: " + endereco;
+function comprar(produto) {
+  document.getElementById("checkout").style.display = "block";
+  document.getElementById("pedido").innerText = "Produto selecionado: " + produto;
+  window.scrollTo(0, document.body.scrollHeight);
 }
 </script>
 
