@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrinho — Backseat Wear</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="carregarCarrinho()">
+
+<header class="header">
+  <div class="logo">BACKSEAT WEAR</div>
+</header>
+
+<section class="carrinho">
+  <h1>Seu carrinho</h1>
+
+  <ul id="lista-carrinho"></ul>
+
+  <p id="total">Total: R$ 0,00</p>
+
+  <div class="pix">
+    <h2>Pagamento via Pix</h2>
+    <p><strong>Chave Pix:</strong> 58450618819</p>
+    <p><strong>Nome:</strong> Antonio Henrique</p>
+    <p><strong>Banco:</strong> Inter</p>
+    <p>Após o pagamento, envie o comprovante.</p>
+  </div>
+
+  <button onclick="finalizarCompra()">Finalizar compra</button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
