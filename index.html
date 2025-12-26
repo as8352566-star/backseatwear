@@ -1,13 +1,134 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Teste Backseat Wear</title>
-</head>
-<body style="font-family: Arial; background: white; color: black; padding: 40px;">
+<meta charset="UTF-8">
+<title>Backseat Wear</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <h1>BACKSEAT WEAR</h1>
-  <p>Se você está vendo isso, o site está funcionando.</p>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #000;
+  margin: 0;
+}
+header, footer {
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+footer {
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+}
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+.produto {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+select, input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+button {
+  background: #000;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.pix {
+  display: none;
+  background: #fff;
+  border: 2px solid #000;
+  padding: 20px;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Backseat Wear</h1>
+<p>Camisetas premium • Estilo urbano</p>
+</header>
+
+<div class="container">
+
+<h2>Finalizar compra</h2>
+
+<input id="nome" placeholder="Nome completo">
+<input id="email" placeholder="E-mail">
+<input id="endereco" placeholder="Endereço completo">
+
+<select id="produto">
+<option value="">Selecione o produto</option>
+<option>Stellar Tee - Branca | R$ 79,99</option>
+<option>Stellar Tee - Preta | R$ 79,99</option>
+<option>ACE Tee | R$ 99,90</option>
+<option>Stellar Baby Look - Preta | R$ 79,99</option>
+<option>Stellar Baby Look - Branca | R$ 79,99</option>
+<option>Stellar Baby Look - Rosa Pink | R$ 79,99</option>
+<option>And Today | R$ 159,99</option>
+</select>
+
+<select id="tamanho">
+<option value="">Selecione o tamanho</option>
+<option>P</option>
+<option>M</option>
+<option>G</option>
+<option>GG</option>
+</select>
+
+<button onclick="finalizar()">Finalizar compra</button>
+
+<div class="pix" id="pix">
+<h3>Pagamento via Pix</h3>
+<p><strong>Chave Pix:</strong> 58450618819</p>
+<p><strong>Titular:</strong> Antonio Henrique</p>
+<p><strong>Banco:</strong> Inter</p>
+<p><strong>Entrega:</strong> 8 a 10 dias úteis</p>
+<p id="resumo"></p>
+<p>
+Instagram / TikTok: <strong>@backseatwear</strong>
+</p>
+</div>
+
+</div>
+
+<footer>
+© 2026 Backseat Wear • Pagamento 100% via Pix
+</footer>
+
+<script>
+function finalizar() {
+  const nome = document.getElementById("nome").value;
+  const email = document.getElementById("email").value;
+  const endereco = document.getElementById("endereco").value;
+  const produto = document.getElementById("produto").value;
+  const tamanho = document.getElementById("tamanho").value;
+
+  if (!nome || !email || !endereco || !produto || !tamanho) {
+    alert("Preencha todos os campos.");
+    return;
+  }
+
+  document.getElementById("pix").style.display = "block";
+  document.getElementById("resumo").innerText =
+    "Pedido: " + produto +
+    " | Tamanho: " + tamanho +
+    " | Cliente: " + nome +
+    " | Endereço: " + endereco;
+}
+</script>
 
 </body>
 </html>
