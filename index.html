@@ -1,82 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Backseat Wear</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-    }
-    header {
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid #333;
-    }
-    .produtos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .produto {
-      border: 1px solid #333;
-      padding: 15px;
-      text-align: center;
-    }
-    select, button {
-      padding: 10px;
-      margin-top: 10px;
-      width: 100%;
-      background: #111;
-      color: #fff;
-      border: 1px solid #444;
-    }
-    button {
-      cursor: pointer;
-      background: #fff;
-      color: #000;
-      font-weight: bold;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      border-top: 1px solid #333;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-  </style>
-</head>
-<body>
+<meta charset="UTF-8">
+<title>Backseat Wear</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<header>
-  <h1>Backseat Wear</h1>
-  <p>Camisetas premium • Estilo urbano</p>
-</header>
-
-<section class="produtos">
-  <div class="produto">
-    <h2>Camiseta Black</h2>
-    <p>R$ 79,90</p>
-
-    <select>
-      <option>Selecione o tamanho</option>
-      <option>P</option>
-      <option>M</option>
-      <option>G</option>
-      <option>GG</option>
-    </select>
-
-    <button>Comprar via Pix</button>
-  </div>
-</section>
-
-<footer>
-  © 2026 Backseat Wear — Pagamento 100% via Pix
-</footer>
-
-</body>
-</html>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
+header, footer {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid #333;
+}
+footer {
+  border-top: 1px solid #333;
+  font-size: 14px;
+}
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+.produto {
+  border: 1px solid #333;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+select, button {
+  width: 100%;
+  padding: 10px;
+  ma
