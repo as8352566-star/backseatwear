@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Backseat Wear</title>
+<title>Não tem amanhã. É hoje.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -15,22 +15,28 @@ body {
 header {
   background: #000;
   color: #fff;
-  padding: 30px;
+  padding: 40px 20px;
   text-align: center;
 }
 header h1 {
   margin: 0;
-  letter-spacing: 2px;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+header p {
+  margin-top: 10px;
+  font-size: 16px;
+  opacity: 0.8;
 }
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
-  padding: 20px;
+  padding: 30px 20px;
 }
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 25px;
 }
 .card {
   background: #fff;
@@ -60,15 +66,15 @@ button {
   display: none;
   background: #fff;
   border: 2px solid #000;
-  padding: 20px;
-  margin-top: 30px;
+  padding: 25px;
+  margin-top: 40px;
 }
 footer {
-  text-align: center;
-  padding: 20px;
   background: #000;
   color: #fff;
-  margin-top: 40px;
+  text-align: center;
+  padding: 25px;
+  margin-top: 50px;
   font-size: 14px;
 }
 </style>
@@ -77,8 +83,8 @@ footer {
 <body>
 
 <header>
-  <h1>BACKSEAT WEAR</h1>
-  <p>Camisetas premium • Estilo urbano</p>
+  <h1>Não tem amanhã. É hoje.</h1>
+  <p>Backseat Wear • Camisetas premium</p>
 </header>
 
 <div class="container">
@@ -87,34 +93,54 @@ footer {
 
 <div class="grid">
 
+<!-- PRODUTOS -->
 <div class="card">
 <h3>Stellar Tee – Branca</h3>
 <p class="price">R$ 79,99</p>
-<select>
-<option>Tamanho</option>
-<option>P</option><option>M</option><option>G</option><option>GG</option>
-</select>
+<select><option>Tamanho</option><option>P</option><option>M</option><option>G</option><option>GG</option></select>
 <button onclick="comprar('Stellar Tee – Branca | R$ 79,99')">Comprar</button>
 </div>
 
 <div class="card">
 <h3>Stellar Tee – Preta</h3>
 <p class="price">R$ 79,99</p>
-<select>
-<option>Tamanho</option>
-<option>P</option><option>M</option><option>G</option><option>GG</option>
-</select>
+<select><option>Tamanho</option><option>P</option><option>M</option><option>G</option><option>GG</option></select>
 <button onclick="comprar('Stellar Tee – Preta | R$ 79,99')">Comprar</button>
 </div>
 
 <div class="card">
 <h3>ACE Tee</h3>
 <p class="price">R$ 99,90</p>
-<select>
-<option>Tamanho</option>
-<option>P</option><option>M</option><option>G</option><option>GG</option>
-</select>
+<select><option>Tamanho</option><option>P</option><option>M</option><option>G</option><option>GG</option></select>
 <button onclick="comprar('ACE Tee | R$ 99,90')">Comprar</button>
+</div>
+
+<div class="card">
+<h3>Stellar Baby Look – Preta</h3>
+<p class="price">R$ 79,99</p>
+<select><option>Tamanho</option><option>P</option><option>M</option><option>G</option><option>GG</option></select>
+<button onclick="comprar('Stellar Baby Look – Preta | R$ 79,99')">Comprar</button>
+</div>
+
+<div class="card">
+<h3>Stellar Baby Look – Branca</h3>
+<p class="price">R$ 79,99</p>
+<select><option>Tamanho</option><option>P</option><option>M</option><option>G</option><option>GG</option></select>
+<button onclick="comprar('Stellar Baby Look – Branca | R$ 79,99')">Comprar</button>
+</div>
+
+<div class="card">
+<h3>Stellar Baby Look – Rosa Pink</h3>
+<p class="price">R$ 79,99</p>
+<select><option>Tamanho</option><option>P</option><option>M</option><option>G</option><option>GG</option></select>
+<button onclick="comprar('Stellar Baby Look – Rosa Pink | R$ 79,99')">Comprar</button>
+</div>
+
+<div class="card">
+<h3>And Today</h3>
+<p class="price">R$ 159,99</p>
+<select><option>Tamanho</option><option>P</option><option>M</option><option>G</option><option>GG</option></select>
+<button onclick="comprar('And Today | R$ 159,99')">Comprar</button>
 </div>
 
 </div>
