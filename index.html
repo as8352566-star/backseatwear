@@ -1,224 +1,170 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Backseat Wear</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f5f5;
-      color: #111;
-    }
-
-    header {
-      background: #000;
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 34px;
-      letter-spacing: 2px;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 16px;
-      opacity: 0.9;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 20px;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      font-size: 18px;
-    }
-
-    .price {
-      font-weight: bold;
-      margin: 10px 0;
-    }
-
-    select, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      font-size: 14px;
-    }
-
-    select {
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background: #000;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      opacity: 0.85;
-    }
-
-    section {
-      margin-top: 60px;
-    }
-
-    section h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    footer {
-      margin-top: 60px;
-      background: #000;
-      color: #fff;
-      text-align: center;
-      padding: 25px 10px;
-      font-size: 14px;
-    }
-  </style>
+  <title>Backseat Wear — Não tem amanhã. É hoje.</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>
   <h1>BACKSEAT WEAR</h1>
   <p>Não tem amanhã. É hoje.</p>
+  <button id="openCart">🛒 Carrinho (<span id="cartCount">0</span>)</button>
 </header>
 
-<div class="container">
-
-  <div class="products">
-
-    <div class="card">
-      <h3>Stellar Tee</h3>
-      <p class="price">R$ 79,99</p>
-      <select>
-        <option>Cor</option>
-        <option>Branca</option>
-        <option>Preta</option>
-      </select>
-      <select>
-        <option>Tamanho</option>
-        <option>P</option>
-        <option>M</option>
-        <option>G</option>
-        <option>GG</option>
-      </select>
-      <button>Comprar</button>
-    </div>
-
-    <div class="card">
-      <h3>ACE Tee</h3>
-      <p class="price">R$ 99,90</p>
-      <select>
-        <option>Tamanho</option>
-        <option>P</option>
-        <option>M</option>
-        <option>G</option>
-        <option>GG</option>
-      </select>
-      <button>Comprar</button>
-    </div>
-
-    <div class="card">
-      <h3>Stellar Baby Look</h3>
-      <p class="price">R$ 79,99</p>
-      <select>
-        <option>Cor</option>
-        <option>Preta</option>
-        <option>Branca</option>
-        <option>Rosa Pink</option>
-      </select>
-      <select>
-        <option>Tamanho</option>
-        <option>P</option>
-        <option>M</option>
-        <option>G</option>
-        <option>GG</option>
-      </select>
-      <button>Comprar</button>
-    </div>
-
-    <div class="card">
-      <h3>And Today</h3>
-      <p class="price">R$ 159,99</p>
-      <select>
-        <option>Tamanho</option>
-        <option>P</option>
-        <option>M</option>
-        <option>G</option>
-        <option>GG</option>
-      </select>
-      <button>Comprar</button>
-    </div>
-
+<section class="products">
+  <!-- Produto 1 -->
+  <div class="product">
+    <h3>Stellar Tee - Branca</h3>
+    <p>R$ 79,99</p>
+    <button onclick="addToCart('Stellar Tee - Branca', 79.99)">Adicionar</button>
   </div>
 
-  <section>
-    <h2>Como funciona</h2>
-    <p>
-      Escolha seu produto, selecione tamanho e cor, finalize o pedido e realize
-      o pagamento via PIX. Após a confirmação, o pedido é enviado.
-    </p>
-  </section>
+  <div class="product">
+    <h3>Stellar Tee - Preta</h3>
+    <p>R$ 79,99</p>
+    <button onclick="addToCart('Stellar Tee - Preta', 79.99)">Adicionar</button>
+  </div>
 
-  <section>
-    <h2>Pagamento</h2>
-    <p>
-      Pagamento exclusivo via PIX.  
-      Os dados são exibidos após a finalização da compra.
-    </p>
-  </section>
+  <div class="product">
+    <h3>ACE Tee</h3>
+    <p>R$ 99,90</p>
+    <button onclick="addToCart('ACE Tee', 99.90)">Adicionar</button>
+  </div>
 
-  <section>
-    <h2>Entrega</h2>
-    <p>
-      Prazo de entrega: <strong>8 a 10 dias úteis</strong>.  
-      Envio para todo o Brasil.
-    </p>
-  </section>
+  <div class="product">
+    <h3>Stellar Baby Look</h3>
+    <p>R$ 79,99</p>
+    <small>Cores: Preta, Branca, Rosa Pink</small>
+    <button onclick="addToCart('Stellar Baby Look', 79.99)">Adicionar</button>
+  </div>
 
-  <section>
-    <h2>Redes sociais</h2>
-    <p>
-      Instagram e TikTok: <strong>@backseatwear</strong>
-    </p>
-  </section>
+  <div class="product">
+    <h3>And Today</h3>
+    <p>R$ 159,99</p>
+    <button onclick="addToCart('And Today', 159.99)">Adicionar</button>
+  </div>
+</section>
 
+<!-- Carrinho -->
+<div id="cart" class="cart">
+  <h2>Carrinho</h2>
+  <ul id="cartItems"></ul>
+  <p>Total: R$ <span id="total">0.00</span></p>
+
+  <button onclick="checkout()">Finalizar Compra</button>
+  <button onclick="closeCart()">Fechar</button>
 </div>
 
-<footer>
-  © 2026 Backseat Wear — Todos os direitos reservados
-</footer>
-
+<script src="script.js"></script>
 </body>
 </html>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+header {
+  padding: 30px;
+  text-align: center;
+  border-bottom: 1px solid #222;
+}
+
+header button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #fff;
+  color: #000;
+  border: none;
+  cursor: pointer;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.product {
+  border: 1px solid #222;
+  padding: 20px;
+  text-align: center;
+}
+
+.product button {
+  margin-top: 10px;
+  padding: 10px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.cart {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: #111;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.cart.open {
+  right: 0;
+}
+
+.cart button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+}
+let cart = [];
+let total = 0;
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  total += price;
+  updateCart();
+}
+
+function updateCart() {
+  document.getElementById("cartCount").innerText = cart.length;
+  const list = document.getElementById("cartItems");
+  list.innerHTML = "";
+
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.innerText = `${item.name} - R$ ${item.price.toFixed(2)}`;
+    list.appendChild(li);
+  });
+
+  document.getElementById("total").innerText = total.toFixed(2);
+}
+
+document.getElementById("openCart").onclick = () => {
+  document.getElementById("cart").classList.add("open");
+};
+
+function closeCart() {
+  document.getElementById("cart").classList.remove("open");
+}
+
+function checkout() {
+  alert(
+`Compra finalizada!
+
+PIX: 58450618819
+Nome: Antonio Henrique
+Banco: Inter
+
+Prazo de entrega: 8 a 10 dias úteis
+
+Instagram: @backseatwear`
+  );
+}
+
