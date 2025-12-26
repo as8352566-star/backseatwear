@@ -9,68 +9,47 @@
 
 <header class="header">
   <div class="logo">BACKSEAT WEAR</div>
-  <nav>
-    <a href="#">Início</a>
-    <a href="#">Produtos</a>
-    <a href="#">Entrega</a>
+
+  <nav class="menu">
+    <a href="#inicio">Início</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#entrega">Entrega</a>
   </nav>
-  <a href="carrinho.html" class="cart">🛒</a>
+
+  <span class="cart">🛒</span>
 </header>
 
-<section class="hero">
+<section class="hero" id="inicio">
   <h1>Não tem amanhã. É hoje.</h1>
 </section>
 
-<section class="produtos">
+<section class="produtos" id="produtos">
+
   <div class="card">
-    <img src="https://via.placeholder.com/400x450" />
+    <img src="https://via.placeholder.com/400x450" alt="Stellar Tee Preta">
     <h3>Stellar Tee - Preta</h3>
     <p>R$ 79,99</p>
-    <a href="produto.html">Ver produto</a>
+    <button>Adicionar ao carrinho</button>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/400x450" />
+    <img src="https://via.placeholder.com/400x450" alt="ACE Tee">
     <h3>ACE Tee</h3>
     <p>R$ 99,90</p>
-    <a href="produto.html">Ver produto</a>
+    <button>Adicionar ao carrinho</button>
   </div>
+
+</section>
+
+<section class="entrega" id="entrega">
+  <h2>Entrega</h2>
+  <p>Prazo de entrega: <strong>8 a 10 dias úteis</strong></p>
+  <p>Pagamento 100% via Pix</p>
 </section>
 
 <footer>
   <p>© 2026 Backseat Wear — Pagamento 100% via Pix</p>
-  <script>
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+</footer>
 
-function adicionarCarrinho(nome, preco) {
-  carrinho.push({ nome, preco });
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  alert("Produto adicionado ao carrinho 🛒");
-}
-
-function carregarCarrinho() {
-  const lista = document.getElementById("lista-carrinho");
-  const totalEl = document.getElementById("total");
-  let total = 0;
-
-  lista.innerHTML = "";
-
-  carrinho.forEach((item, index) => {
-    total += item.preco;
-    lista.innerHTML += `
-      <li>
-        ${item.nome} - R$ ${item.preco.toFixed(2)}
-        <button onclick="removerItem(${index})">X</button>
-      </li>
-    `;
-  });
-
-  totalEl.innerText = "Total: R$ " + total.toFixed(2);
-}
-
-function removerItem(index) {
-  carrinho.splice(index, 1);
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  carregarCarrinho();
-}
-</script>
+</body>
+</html>
