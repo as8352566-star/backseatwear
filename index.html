@@ -1,91 +1,82 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Backseat Wear | Pedido</title>
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <title>Backseat Wear</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
       background: #000;
       color: #fff;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
       padding: 20px;
     }
-    .box {
-      max-width: 400px;
-      margin: auto;
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
+    .produto {
+      border: 1px solid #333;
+      padding: 15px;
+      text-align: center;
     }
-    input, select, button {
-      width: 100%;
+    select, button {
       padding: 10px;
       margin-top: 10px;
-      border-radius: 5px;
-      border: none;
+      width: 100%;
+      background: #111;
+      color: #fff;
+      border: 1px solid #444;
     }
     button {
+      cursor: pointer;
       background: #fff;
       color: #000;
       font-weight: bold;
-      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      border-top: 1px solid #333;
+      margin-top: 20px;
+      font-size: 14px;
     }
   </style>
 </head>
-
 <body>
-  <div class="box">
-    <h2>Pedido – Backseat Wear</h2>
 
-    <input type="text" id="nome" placeholder="Seu nome" required>
-    <input type="email" id="email" placeholder="Seu e-mail" required>
+<header>
+  <h1>Backseat Wear</h1>
+  <p>Camisetas premium • Estilo urbano</p>
+</header>
 
-    <select id="tamanho">
-      <option value="P">P</option>
-      <option value="M">M</option>
-      <option value="G">G</option>
-      <option value="GG">GG</option>
-      <option value="EG">EG</option>
+<section class="produtos">
+  <div class="produto">
+    <h2>Camiseta Black</h2>
+    <p>R$ 79,90</p>
+
+    <select>
+      <option>Selecione o tamanho</option>
+      <option>P</option>
+      <option>M</option>
+      <option>G</option>
+      <option>GG</option>
     </select>
 
-    <input type="text" id="endereco" placeholder="Endereço completo" required>
-
-    <button onclick="enviarPedido()">Finalizar Pedido</button>
-
-    <p id="status"></p>
+    <button>Comprar via Pix</button>
   </div>
+</section>
 
-<script>
-  (function(){
-    emailjs.init("SEU_PUBLIC_KEY_AQUI");
-  })();
+<footer>
+  © 2026 Backseat Wear — Pagamento 100% via Pix
+</footer>
 
-  function gerarCodigo() {
-    return "BCW-" + Math.floor(Math.random() * 100000);
-  }
-
-  function enviarPedido() {
-    const codigo = gerarCodigo();
-
-    const params = {
-      nome: document.getElementById("nome").value,
-      email: document.getElementById("email").value,
-      tamanho: document.getElementById("tamanho").value,
-      endereco: document.getElementById("endereco").value,
-      codigo: codigo
-    };
-
-    emailjs.send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", params)
-      .then(() => {
-        document.getElementById("status").innerText =
-          "Pedido enviado! Código: " + codigo;
-      })
-      .catch(() => {
-        document.getElementById("status").innerText =
-          "Erro ao enviar pedido.";
-      });
-  }
-</script>
 </body>
 </html>
