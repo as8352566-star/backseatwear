@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Black City Wear | Pedido</title>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      padding: 20px;
+    }
+    .box {
+      max-width: 400px;
+      margin: auto;
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    h2 {
+      text-align: center;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      background: #fff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #status {
+      margin-top: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h2>Pedido – Black City Wear</h2>
+
+    <input type="text" id="nome" placeholder="Seu nome" required>
+    <input type="email" id="email" placeholder="Seu e-mail" required>
+
+    <select id="tamanho">
+      <option value="">Escolha o tamanho</option>
+      <option value="P">P</option>
+      <option value="M">M</option>
+      <option value="G">G</option>
+      <option value="GG">GG</option>
+      <option value="EG">EG</option>
+    </select>
+
+    <input type="text" id="endereco" placeholder="Endereço completo" required>
+
+    <button onclick="enviarPedido()">Finalizar Pedido</button>
+
+    <p id="status"></p>
+  </div>
+
+  <script>
+    (function(){
+      emailjs.init("SEU_PUBLIC_KEY_AQUI");
+    })();
+
+    function gerarCodigo() {
+      return "BCW-" + Math.floor(Math.random() * 100000);
+    }
+
+    function enviarPedido() {
+      const codigo = gerarCodigo();
+
+      const params = {
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        tamanho: document.getElementById("tamanho").value,
+        endereco: document.getElementById("endereco").value,
+        codigo: codigo
+      };
+
+      emailjs.send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", params)
+        .then(() => {
+          document.getElementById("status").innerText =
+            "Pedido enviado com sucesso! Código: " + codigo;
+        })
+        .catch(() => {
+          document.getElementById("status").innerText =
+            "Erro ao enviar o pedido.";
+        });
+    }
+  </script>
+
+</body>
+</html>
