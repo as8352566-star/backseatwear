@@ -47,3 +47,16 @@ function finalizarCompra() {
   localStorage.removeItem("carrinho");
   carregarCarrinho();
 }
+function adicionarComTamanho(nome, preco, selectId) {
+  const tamanho = document.getElementById(selectId).value;
+
+  if (tamanho === "") {
+    alert("Escolha um tamanho antes de adicionar ao carrinho.");
+    return;
+  }
+
+  carrinho.push({ nome, preco, tamanho });
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  alert(`Produto adicionado 🛒 | Tamanho: ${tamanho}`);
+}
