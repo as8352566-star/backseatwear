@@ -31,9 +31,18 @@
   <h3>Stellar Tee - Preta</h3>
   <p>R$ 79,99</p>
 
-  <button onclick="adicionarCarrinho('Stellar Tee - Preta', 79.99)">
-    Adicionar ao carrinho
-  </button>
+<select id="tamanho-stellar">
+  <option value="">Escolha o tamanho</option>
+  <option value="P">P</option>
+  <option value="M">M</option>
+  <option value="G">G</option>
+  <option value="GG">GG</option>
+</select>
+
+<button onclick="adicionarComTamanho('Stellar Tee - Preta', 79.99, 'tamanho-stellar')">
+  Adicionar ao carrinho
+</button>
+
 </div>
 
 
@@ -41,8 +50,15 @@
     <img src="https://via.placeholder.com/400x450" alt="ACE Tee">
     <h3>ACE Tee</h3>
     <p>R$ 99,90</p>
-<button onclick="adicionarCarrinho('ACE Tee', 99.90)">
+<select id="tamanho-ace">
+  <option value="">Escolha o tamanho</option>
+  <option value="P">P</option>
+  <option value="M">M</option>
+  <option value="G">G</option>
+  <option value="GG">GG</option>
+</select>
 
+<button onclick="adicionarComTamanho('ACE Tee', 99.90, 'tamanho-ace')">
   Adicionar ao carrinho
 </button>
 
