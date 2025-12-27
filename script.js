@@ -23,7 +23,8 @@ function carregarCarrinho() {
 
     const li = document.createElement("li");
     li.innerHTML = `
-      ${item.nome} — R$ ${item.preco.toFixed(2)}
+${item.nome} (Tam: ${item.tamanho}) — R$ ${item.preco.toFixed(2)}
+
       <button onclick="removerItem(${index})">X</button>
     `;
 
