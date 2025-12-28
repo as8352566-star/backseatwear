@@ -9,11 +9,12 @@
 
 <header class="header">
   <a href="index.html" class="logo">BACKSEAT WEAR</a>
+  <a href="carrinho.html" class="cart">🛒</a>
 </header>
 
 <section class="produto-page">
 
-  <img src="https://via.placeholder.com/500x600" alt="Stellar Tee">
+  <img id="imgProduto" src="img/stellar-preta.png" alt="Stellar Tee" width="400">
 
   <div class="info">
     <h1>Stellar Tee</h1>
@@ -22,23 +23,22 @@
     <label>Tamanho</label>
     <select id="tamanho">
       <option value="">Escolha</option>
-      <option value="P">P</option>
-      <option value="M">M</option>
-      <option value="G">G</option>
-      <option value="GG">GG</option>
+      <option>P</option>
+      <option>M</option>
+      <option>G</option>
+      <option>GG</option>
     </select>
 
     <label>Cor</label>
-    <select id="cor">
+    <select id="cor" onchange="trocarImagem()">
       <option value="">Escolha</option>
       <option value="Preta">Preta</option>
       <option value="Branca">Branca</option>
-      <option value="Rosa Pink">Rosa Pink</option>
     </select>
 
     <label>Cupom (5% OFF)</label>
-    <select id="cupom">
-      <option value="">Selecione</option>
+    <select id="cupom" onchange="aplicarCupom()">
+      <option value="">Escolha</option>
       <option value="montanh">montanh</option>
       <option value="juh">juh</option>
       <option value="igor">igor</option>
@@ -46,43 +46,57 @@
       <option value="eric">eric</option>
     </select>
 
-    <button onclick="aplicarCupom()">Aplicar cupom</button>
     <button onclick="comprar()">Comprar</button>
   </div>
 
 </section>
 
 <script>
-let precoAtual = 79.99;
+const precoOriginal = 79.99;
+
+function trocarImagem() {
+  const cor = document.getElementById("cor").value;
+  const img = document.getElementById("imgProduto");
+
+  if (cor === "Branca") {
+    img.src = "img/stellar-branca.png";
+  } else {
+    img.src = "img/stellar-preta.png";
+  }
+}
 
 function aplicarCupom() {
   const cupom = document.getElementById("cupom").value;
-  const cuponsValidos = ["montanh", "juh", "igor", "minipekka", "eric"];
+  const precoEl = document.getElementById("preco");
 
-  if (cuponsValidos.includes(cupom)) {
-    precoAtual = 79.99 * 0.95;
-    document.getElementById("preco").innerText =
-      "R$ " + precoAtual.toFixed(2).replace(".", ",") + " (5% OFF)";
-    alert("Cupom aplicado! 5% OFF 🔥");
+  if (cupom) {
+    const precoFinal = precoOriginal * 0.95;
+    precoEl.innerText = "R$ " + precoFinal.toFixed(2).replace(".", ",");
+  } else {
+    precoEl.innerText = "R$ 79,99";
   }
 }
 
 function comprar() {
   const tamanho = document.getElementById("tamanho").value;
   const cor = document.getElementById("cor").value;
+  const cupom = document.getElementById("cupom").value;
 
   if (!tamanho || !cor) {
     alert("Escolha o tamanho e a cor.");
     return;
   }
 
+  let precoFinal = cupom ? precoOriginal * 0.95 : precoOriginal;
+
   let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
   carrinho.push({
     nome: "Stellar Tee",
-    preco: precoAtual,
-    tamanho: tamanho,
-    cor: cor
+    preco: precoFinal,
+    tamanho,
+    cor,
+    cupom
   });
 
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
