@@ -17,11 +17,7 @@
 
   <div class="info">
     <h1>Stellar Tee</h1>
-<p id="preco">R$ 79,99</p>
-
-<input type="text" id="cupom" placeholder="Digite seu cupom">
-<button onclick="aplicarCupom()">Aplicar cupom</button>
-
+    <p id="preco">R$ 79,99</p>
 
     <label>Tamanho</label>
     <select id="tamanho">
@@ -40,8 +36,9 @@
       <option value="Rosa Pink">Rosa Pink</option>
     </select>
 
-    <label>Cupom</label>
+    <label>Cupom (5% OFF)</label>
     <select id="cupom">
+      <option value="">Selecione</option>
       <option value="montanh">montanh</option>
       <option value="juh">juh</option>
       <option value="igor">igor</option>
@@ -49,18 +46,30 @@
       <option value="eric">eric</option>
     </select>
 
+    <button onclick="aplicarCupom()">Aplicar cupom</button>
     <button onclick="comprar()">Comprar</button>
   </div>
 
 </section>
 
-<script src="script.js"></script>
-
 <script>
+let precoAtual = 79.99;
+
+function aplicarCupom() {
+  const cupom = document.getElementById("cupom").value;
+  const cuponsValidos = ["montanh", "juh", "igor", "minipekka", "eric"];
+
+  if (cuponsValidos.includes(cupom)) {
+    precoAtual = 79.99 * 0.95;
+    document.getElementById("preco").innerText =
+      "R$ " + precoAtual.toFixed(2).replace(".", ",") + " (5% OFF)";
+    alert("Cupom aplicado! 5% OFF 🔥");
+  }
+}
+
 function comprar() {
   const tamanho = document.getElementById("tamanho").value;
   const cor = document.getElementById("cor").value;
-  const cupom = document.getElementById("cupom").value;
 
   if (!tamanho || !cor) {
     alert("Escolha o tamanho e a cor.");
@@ -71,32 +80,13 @@ function comprar() {
 
   carrinho.push({
     nome: "Stellar Tee",
-    preco: 79.99,
+    preco: precoAtual,
     tamanho: tamanho,
-    cor: cor,
-    cupom: cupom
+    cor: cor
   });
 
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
   window.location.href = "carrinho.html";
-}
-<script>
-function aplicarCupom() {
-  const cupom = document.getElementById("cupom").value.toLowerCase();
-  const cuponsValidos = ["montanh", "juh", "igor", "minipekka", "eric"];
-  const precoOriginal = 79.99;
-  let precoFinal = precoOriginal;
-
-  if (cuponsValidos.includes(cupom)) {
-    precoFinal = precoOriginal * 0.95;
-    alert("Cupom aplicado! 5% OFF 🔥");
-  } else if (cupom !== "") {
-    alert("Cupom inválido ❌");
-  }
-
-  document.getElementById("preco").innerText =
-    "R$ " + precoFinal.toFixed(2).replace(".", ",");
 }
 </script>
 
