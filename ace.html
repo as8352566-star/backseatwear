@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>ACE Tee — Backseat Wear</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">BACKSEAT WEAR</a>
+</header>
+
+<section class="produto-page">
+
+  <img src="https://via.placeholder.com/500x600" alt="ACE Tee">
+
+  <div class="info">
+    <h1>ACE Tee</h1>
+    <p class="preco">R$ 99,90</p>
+
+    <label>Tamanho</label>
+    <select id="tamanho">
+      <option value="">Escolha</option>
+      <option value="P">P</option>
+      <option value="M">M</option>
+      <option value="G">G</option>
+      <option value="GG">GG</option>
+    </select>
+
+    <label>Cor</label>
+    <select id="cor">
+      <option value="">Escolha</option>
+      <option value="Preta">Preta</option>
+      <option value="Branca">Branca</option>
+    </select>
+
+    <label>Cupom</label>
+    <select id="cupom">
+      <option value="">Sem cupom</option>
+      <option value="montanh">montanh</option>
+      <option value="juh">juh</option>
+      <option value="igor">igor</option>
+      <option value="minipekka">minipekka</option>
+      <option value="eric">eric</option>
+    </select>
+
+    <button onclick="comprar()">Comprar</button>
+  </div>
+
+</section>
+
+<script>
+function comprar() {
+  const tamanho = document.getElementById("tamanho").value;
+  const cor = document.getElementById("cor").value;
+  const cupom = document.getElementById("cupom").value;
+
+  if (!tamanho || !cor) {
+    alert("Escolha o tamanho e a cor.");
+    return;
+  }
+
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+  carrinho.push({
+    nome: "ACE Tee",
+    preco: 99.90,
+    tamanho: tamanho,
+    cor: cor,
+    cupom: cupom
+  });
+
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  window.location.href = "carrinho.html";
+}
+</script>
+
+</body>
+</html>
