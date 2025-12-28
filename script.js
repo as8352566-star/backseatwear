@@ -61,3 +61,21 @@ function adicionarComTamanho(nome, preco, selectId) {
 
   alert(`Produto adicionado 🛒 | Tamanho: ${tamanho}`);
 }
+<script>
+function aplicarCupom() {
+  const cupom = document.getElementById("cupom").value.toLowerCase();
+  const cuponsValidos = ["montanh", "juh", "igor", "minipekka", "eric"];
+  const precoOriginal = 79.99; // MUDE se for outro produto
+  let precoFinal = precoOriginal;
+
+  if (cuponsValidos.includes(cupom)) {
+    precoFinal = precoOriginal * 0.95; // 5% OFF
+    alert("Cupom aplicado! 5% de desconto 🔥");
+  } else if (cupom !== "") {
+    alert("Cupom inválido ❌");
+  }
+
+  document.getElementById("preco").innerText =
+    "R$ " + precoFinal.toFixed(2).replace(".", ",");
+}
+</script>
