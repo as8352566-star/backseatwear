@@ -17,7 +17,11 @@
 
   <div class="info">
     <h1>Stellar Tee</h1>
-    <p class="preco">R$ 79,99</p>
+<p id="preco">R$ 79,99</p>
+
+<input type="text" id="cupom" placeholder="Digite seu cupom">
+<button onclick="aplicarCupom()">Aplicar cupom</button>
+
 
     <label>Tamanho</label>
     <select id="tamanho">
@@ -77,6 +81,23 @@ function comprar() {
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
   window.location.href = "carrinho.html";
+}
+<script>
+function aplicarCupom() {
+  const cupom = document.getElementById("cupom").value.toLowerCase();
+  const cuponsValidos = ["montanh", "juh", "igor", "minipekka", "eric"];
+  const precoOriginal = 79.99;
+  let precoFinal = precoOriginal;
+
+  if (cuponsValidos.includes(cupom)) {
+    precoFinal = precoOriginal * 0.95;
+    alert("Cupom aplicado! 5% OFF 🔥");
+  } else if (cupom !== "") {
+    alert("Cupom inválido ❌");
+  }
+
+  document.getElementById("preco").innerText =
+    "R$ " + precoFinal.toFixed(2).replace(".", ",");
 }
 </script>
 
