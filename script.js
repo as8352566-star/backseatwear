@@ -1,81 +1,46 @@
-// Carrinho salvo no navegador
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
-// Adicionar produto
-function adicionarCarrinho(nome, preco) {
-  carrinho.push({ nome, preco });
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  alert("Produto adicionado ao carrinho 🛒");
-}
-
-// Carregar carrinho (para usar depois em carrinho.html)
 function carregarCarrinho() {
   const lista = document.getElementById("lista-carrinho");
   const totalEl = document.getElementById("total");
 
-  if (!lista || !totalEl) return;
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  let total = 0;
 
   lista.innerHTML = "";
-  let total = 0;
 
   carrinho.forEach((item, index) => {
     total += item.preco;
 
     const li = document.createElement("li");
     li.innerHTML = `
-${item.nome} (Tam: ${item.tamanho}) — R$ ${item.preco.toFixed(2)}
-
-      <button onclick="removerItem(${index})">X</button>
+      <strong>${item.nome}</strong><br>
+      Tamanho: ${item.tamanho} <br>
+      Cor: ${item.cor} <br>
+      Preço: R$ ${item.preco.toFixed(2).replace(".", ",")}
+      <br><br>
+      <button onclick="removerItem(${index})">Remover</button>
+      <hr>
     `;
 
     lista.appendChild(li);
   });
 
-  totalEl.innerText = "Total: R$ " + total.toFixed(2);
+  totalEl.innerText =
+    "Total: R$ " + total.toFixed(2).replace(".", ",");
 }
 
-// Remover item
 function removerItem(index) {
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
   carrinho.splice(index, 1);
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
   carregarCarrinho();
 }
 
-// Limpar carrinho após compra
 function finalizarCompra() {
-  alert("Pedido realizado! Enviaremos as instruções do Pix no seu e-mail.");
-  carrinho = [];
+  alert(
+    "Pedido registrado!\n\n" +
+    "Faça o pagamento via Pix e envie o comprovante.\n\n" +
+    "Obrigado por comprar na Backseat Wear 🖤"
+  );
+
   localStorage.removeItem("carrinho");
-  carregarCarrinho();
 }
-function adicionarComTamanho(nome, preco, selectId) {
-  const tamanho = document.getElementById(selectId).value;
-
-  if (tamanho === "") {
-    alert("Escolha um tamanho antes de adicionar ao carrinho.");
-    return;
-  }
-
-  carrinho.push({ nome, preco, tamanho });
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-  alert(`Produto adicionado 🛒 | Tamanho: ${tamanho}`);
-}
-<script>
-function aplicarCupom() {
-  const cupom = document.getElementById("cupom").value.toLowerCase();
-  const cuponsValidos = ["montanh", "juh", "igor", "minipekka", "eric"];
-  const precoOriginal = 79.99; // MUDE se for outro produto
-  let precoFinal = precoOriginal;
-
-  if (cuponsValidos.includes(cupom)) {
-    precoFinal = precoOriginal * 0.95; // 5% OFF
-    alert("Cupom aplicado! 5% de desconto 🔥");
-  } else if (cupom !== "") {
-    alert("Cupom inválido ❌");
-  }
-
-  document.getElementById("preco").innerText =
-    "R$ " + precoFinal.toFixed(2).replace(".", ",");
-}
-</script>
